@@ -1,0 +1,65 @@
+docker container run --publish 80:80 nginx
+# now go to localhost
+
+# Run in the background 
+docker container run --publish 80:80 --detach nginx
+
+# whats running?
+docker container ls
+
+# WHAT ABOUT ALL IMAGES
+docker container ls -a
+
+# Get container ID and now we can stop
+docker container stop e19004d5b17
+
+# Give a name
+docker container run --publish 80:80 --detach --name mynewdocker nginx
+
+# Get logs
+docker container logs mynewdocker
+
+docker container top webhosticus
+
+# Remove docker from the list 
+# Must be stopped first 
+docker container rm -f 064f1f1186c3
+
+# What actually happens in the background 
+docker run --name mongo -d mongo
+docker ps
+
+# process list
+ps aux | grep mongo
+# mongo is there - its a process with a PID!
+
+
+# ADD  env variables
+docker container run -d -p 1234:1234 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+# get password
+docker container logs db
+# GENERATED ROOT PASSWORD: xie7nu4igaethaiQu2Sheefaa9Kieth9
+
+# APACHE SERVER
+docker container run -d --name webserver -p 8080:80 httpd
+
+# PROXY NGINX 
+docker container run --publish 80:80 --detach --name proxy nginx
+
+# STOP ALL SERVERS
+docker container stop webserver db proxy
+docker container rm -f :id :id :id
+docker container image
+
+# GET INFO
+# Returns the json file 
+docker container inspect db
+docker container stats
+
+# No NEED FOR SSH - USE CLI
+# THIS TAKES YOU INSIDE THE PROCESS
+docker container run -it --name ubuntu ubuntu
+
+
+
+
